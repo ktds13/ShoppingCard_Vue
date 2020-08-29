@@ -7,8 +7,8 @@
     v-for="item in items"
     :key="item.id"
     :item="item"
-    v-on:add-item="total += $event"
-     v-on:remove-item="total -= $event"
+    v-on:add-item="total += $event, count++"
+     v-on:remove-item="total -= $event, count--"
     />
     </td>
     </tr>
@@ -19,6 +19,7 @@
     /> -->
     <!-- <p> Quantity : {{item.length}} </p> -->
     <p> Total Cost: {{total}} </p>
+    <p> Quantity : {{count}}</p>
     </div>
 </template>
 
@@ -88,11 +89,15 @@ items:[
     
 ],
 total : 0,
+count : 0,
 // methods: {
 //   onRemoveItem: function (cost) {
 //     this.total -= cost
 //   }
-// }
+//onAddItem: function(cost){
+   // this.total += cost
+//}
+//}
         }
     }
 }
