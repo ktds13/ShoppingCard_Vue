@@ -1,29 +1,34 @@
 <template>
-    <table>
+<div>
+    <!-- <table>
         <th>
             <td>Quantity</td>
             <td>Total Price </td>
-        </th>
-        <tr>
-            <td>{{item.len}}</td>
-            <td>{{total}}</td>
+            <td>asd</td>
+        </th> -->
+        <tr >
+            <td>{{fruits.image}}</td>
+            <td>{{fruits.name}}</td>
+            <td>{{fruits.price}} </td>
             
         </tr>
         
-    </table>
+    <!-- </table>
+    <h1>{{total}} </h1> -->
+</div>
 </template>
 
 <script>
 export default {
     props:{
-        item:{
-            type: Object,
+        fruits:{
+            type: Array,
             required:true
         },
         total: {
             type: Number,
-            
         }
+    
     }
 }
 </script>

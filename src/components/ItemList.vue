@@ -7,8 +7,8 @@
     Item Name: {{item.name}} <br/>
     Price : {{item.price}} <br>
         </div>
-        <button @click="$emit('add-item', item.price)">Add</button> 
-    <button @click="$emit('remove-item', item.price)"> Remove</button>
+        <button @click="$emit('add-item', item)">Add</button> 
+    <button @click="$emit('remove-item', item)"> Remove</button>
 
 
     </div>
