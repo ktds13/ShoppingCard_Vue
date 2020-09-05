@@ -14,30 +14,36 @@
     </tr>
     </table>
     <table>
+        <thead>
+            <th> Image</th>
+            <th> Name </th>
+            <th> Price</th>
+        </thead>
         <tbody>
-            <DetailsTable
-            :fruits = "fruits"
+          
+            <ItemRow
+            v-for="fruit in fruits"
+           :key = " fruit.id"
+           :fruit = "fruit"
             />
         </tbody>
     </table>
-    <!-- <DetailsTable
-  :total = "total"
-  :fruits = "fruits"
-    /> -->
-    <!-- <p> Quantity : {{item.length}} </p> -->
+    
     <p> Total Cost: {{total}} </p>
     <p> Quantity : {{count}}</p>
+    
+   
     </div>
 </template>
 
 <script>
 import ItemList from './ItemList'
-import DetailsTable from './DetailsTable'
+import ItemRow from './ItemRow'
 let itemId=1
 export default {
     components:{
         ItemList,
-        DetailsTable
+        ItemRow
     },
     data(){
         return{
@@ -98,6 +104,7 @@ items:[
      
 total : 0,
 count : 0,
+qty : 0,
 fruits: []
    }
     },
@@ -105,18 +112,14 @@ methods: {
   onRemoveItem (product) {
     this.total -= product.price
     this.count--
+   
+    this.fruits.filter(fruit => fruit.id !== product.id)
   },
 onAddItem (product){
    this.total += product.price
    this.count++
-   let productId = 0
-    this.fruits = new product({
-       id: productId++,
-        name: product.name,
-        image: product.image,
-        alt : product.alt,
-        price:product.price
-   })
+   
+  this.fruits.push(product)
 }
 }
         }
