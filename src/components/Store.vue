@@ -8,7 +8,7 @@
     :key="item.id"
     :item="item"
     @add-item="onAddItem"
-     @remove-item="onRemoveItem"
+
     />
     </td>
     </tr>
@@ -18,21 +18,24 @@
             <th> Image</th>
             <th> Name </th>
             <th> Price</th>
+            <!-- <th> Total </th> -->
         </thead>
         <tbody>
-          
+
             <ItemRow
-            v-for="fruit in fruits"
-           :key = " fruit.id"
+            v-for="(fruit,i) in fruits"
+           :key = i
            :fruit = "fruit"
+          
+             @remove-item="onRemoveItem"
             />
         </tbody>
     </table>
-    
+
     <p> Total Cost: {{total}} </p>
     <p> Quantity : {{count}}</p>
-    
-   
+
+
     </div>
 </template>
 
@@ -97,11 +100,11 @@ items:[
         alt : "Watermelon",
         price:5
     },
-    
 
-    
+
+
 ],
-     
+
 total : 0,
 count : 0,
 qty : 0,
@@ -112,17 +115,17 @@ methods: {
   onRemoveItem (product) {
     this.total -= product.price
     this.count--
-   
-    this.fruits.filter(fruit => fruit.id !== product.id)
+
+   this.fruits.pop(product)
   },
 onAddItem (product){
    this.total += product.price
    this.count++
-   
+
   this.fruits.push(product)
 }
 }
         }
-    
+
 
 </script>
